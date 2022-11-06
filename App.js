@@ -6,9 +6,10 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import type {Node} from 'react';
 import {
+  Button,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -56,6 +57,7 @@ const Section = ({children, title}): Node => {
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
+  const [pressed, setPressed] = useState(false);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -77,6 +79,12 @@ const App: () => Node = () => {
           }}>
           <Section title="Step One">
             <Text style={styles.highlight}>HELLO WORLD VICTOR</Text>
+            <Button
+              title={`${pressed ? 'Clicado' : 'Não Clicado'}`}
+              onPress={() => {
+                setPressed(!pressed);
+              }}
+            />
           </Section>
           <Section title="See Your Changes">
             <ReloadInstructions />
