@@ -7,7 +7,7 @@
  */
 
 import React, {useState} from 'react';
-import type {Node} from 'react';
+
 import {
   Button,
   SafeAreaView,
@@ -16,6 +16,7 @@ import {
   StyleSheet,
   Text,
   useColorScheme,
+  useWindowDimensions,
   View,
 } from 'react-native';
 
@@ -55,9 +56,10 @@ const Section = ({children, title}): Node => {
   );
 };
 
-const App: () => Node = () => {
+const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const [pressed, setPressed] = useState(false);
+  const {height, width} = useWindowDimensions();
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -85,6 +87,8 @@ const App: () => Node = () => {
                 setPressed(!pressed);
               }}
             />
+            Altura: {height}
+            Largura: {width}
           </Section>
           <Section title="See Your Changes">
             <ReloadInstructions />
