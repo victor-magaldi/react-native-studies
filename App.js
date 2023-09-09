@@ -27,10 +27,11 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import {FlatListBasics} from './src/components/FlatListBasics';
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
-const Section = ({children, title}): Node => {
+const Section = ({children, title}) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
@@ -79,6 +80,9 @@ const App = () => {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
+          <Section title={'FlatListBasics'}>
+            <FlatListBasics />
+          </Section>
           <Section title="Step One">
             <Text style={styles.highlight}>HELLO WORLD VICTOR</Text>
             <Button
